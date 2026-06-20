@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/go-fde/brand/main/social/go-fde.png" alt="go-fde/clear" width="720"></p>
+
 # clear
 
 Pure-Go passthrough block device with no encryption.
