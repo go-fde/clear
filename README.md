@@ -2,6 +2,10 @@
 
 # clear
 
+[![ci](https://github.com/go-fde/clear/actions/workflows/ci.yml/badge.svg)](https://github.com/go-fde/clear/actions/workflows/ci.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/go-fde/clear.svg)](https://pkg.go.dev/github.com/go-fde/clear)
+[![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-blue.svg)](LICENSE)
+
 Pure-Go passthrough block device with no encryption.
 
 ## Overview
