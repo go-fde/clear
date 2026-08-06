@@ -22,4 +22,5 @@ Apple M4 Max, macOS 26.5, Go 1.26.4 `darwin/arm64`. In-memory backing device
 The passthrough is bound only by `copy()`/memory bandwidth and contributes no
 overhead beyond a function call and a bounds check; it serves as the
 no-encryption upper bound for the encrypted backends (`luks`, `apfs`), whose
-bulk AES-XTS throughput is ~585–600 MB/s (see their `BENCHMARKS.md`).
+bulk AES-XTS throughput is ~3000–3500 MB/s on this host with the fused
+`github.com/go-encryptions/xts` kernel (see their `BENCHMARKS.md`).
