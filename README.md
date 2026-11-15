@@ -76,7 +76,7 @@ defer dev.Close()
 - **`Size()` is advisory.** It is read once, at open time, and only when the
   backend is an `*os.File` (`0` otherwise, and `0` if `Stat` fails). It does
   not follow later growth or truncation, and an `Open`ed block-device node
-  reports the size `Stat` gives, which is `0` on some platforms.
+  reports the size `Stat` gives, which is `0` on Linux and macOS.
 - **No bounds checking.** Offsets and lengths go straight to the backend, so
   a read past the end returns whatever the backend returns (`io.EOF` for a
   file); `clear` neither clamps nor reports a short write beyond what the
