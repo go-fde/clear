@@ -67,3 +67,20 @@ defer dev.Close()
 | `WriteAt(p, off)` | Forward write to the underlying device |
 | `Size() int64` | File size at open time (`0` for non-file backends) |
 | `Close()` | Close the underlying device |
+
+## Limitations
+
+- **No encryption, by design.** `clear` forwards bytes unchanged; it adds no
+  confidentiality, integrity or authentication. Use it only to give a
+  plaintext device the same interface as the encrypted backends.
+- **`Size()` is advisory.** It is read once, at open time, and only when the
+  backend is an `*os.File` (`0` otherwise, and `0` if `Stat` fails). It does
+  not follow later growth or truncation, and an `Open`ed block-device node
+  reports the size `Stat` gives, which is `0` on some platforms.
+- **No bounds checking.** Offsets and lengths go straight to the backend, so
+  a read past the end returns whatever the backend returns (`io.EOF` for a
+  file); `clear` neither clamps nor reports a short write beyond what the
+  backend does.
+- **No locking.** Concurrent calls are as safe as the backend makes them
+  (`*os.File` ReadAt/WriteAt are safe for concurrent use).
+- **Parses nothing,** so there is no fuzz target: there is no input format.
