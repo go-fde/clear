@@ -19,6 +19,9 @@ tasks:
     cmds:
       - go test -race -coverprofile=cover.out ./...
       - go tool cover -func=cover.out | tail -1
+      # 100% gate: counts uncovered blocks (go tool cover -func rounds to
+      # 0.1%, so a gate on its total passes at 99.95%); an empty profile fails.
+      - go run github.com/go-fleettools/fleettools/cmd/covblocks@v0.124.0 cover.out
 
   lint:
     desc: "Vet the module"
